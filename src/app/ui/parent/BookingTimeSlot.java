@@ -45,9 +45,10 @@ public class BookingTimeSlot extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,9 +74,6 @@ public class BookingTimeSlot extends javax.swing.JFrame {
         jLabel4.setText("Enter a time slot:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 630, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 780, 400));
-
         jButton1.setBackground(new java.awt.Color(204, 255, 255));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jButton1.setText("BOOK");
@@ -83,6 +81,16 @@ public class BookingTimeSlot extends javax.swing.JFrame {
 
         jTextField2.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 630, 400, 50));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255, 80));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255, 80));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 310));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 690, 310));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/booking1.jpg"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 1760, 1260));
@@ -8336,10 +8344,11 @@ public class BookingTimeSlot extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

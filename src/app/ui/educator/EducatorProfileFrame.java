@@ -47,11 +47,11 @@ public class EducatorProfileFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        locationCoordinate = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
+        children = new javax.swing.JLabel();
+        bookingsMade = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
@@ -98,20 +98,25 @@ public class EducatorProfileFrame extends javax.swing.JFrame {
         jLabel8.setText("Location Coordinate:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, 300, 40));
+        locationCoordinate.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        locationCoordinate.setText("1");
+        jPanel2.add(locationCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 490, 240, 50));
 
-        jTextField2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 300, 40));
+        username.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        username.setText("1");
+        jPanel2.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 240, 50));
 
-        jTextField3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 300, 40));
+        email.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        email.setText("1");
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 240, 50));
 
-        jTextField4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 300, 40));
+        children.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        children.setText("1");
+        jPanel2.add(children, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 240, 50));
 
-        jTextField5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 300, 40));
+        bookingsMade.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        bookingsMade.setText("1");
+        jPanel2.add(bookingsMade, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, 240, 50));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 910, 580));
 
@@ -687,6 +692,9 @@ public class EducatorProfileFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JLabel bookingsMade;
+    private javax.swing.JLabel children;
+    private javax.swing.JLabel email;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
@@ -697,10 +705,7 @@ public class EducatorProfileFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel locationCoordinate;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }

@@ -81,24 +81,24 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Book Successful"/>
+                <Property name="text" type="java.lang.String" value="name, time, destination"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="290" y="50" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="250" y="110" width="320" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField5">
+            <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="36" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Name time destination"/>
+                <Property name="text" type="java.lang.String" value="Book Successful"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="180" y="110" width="450" height="60"/>
+                  <AbsoluteConstraints x="240" y="40" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
