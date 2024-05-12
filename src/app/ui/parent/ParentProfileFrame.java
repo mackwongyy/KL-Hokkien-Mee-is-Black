@@ -25,16 +25,40 @@ public class ParentProfileFrame extends javax.swing.JFrame {
     private final StudentService studentService;
     private final AdminService adminService;
     
-    public void Connect() {
+    public void Connect(String parentUsername) {
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ds_assignment?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Wdhjbhgq@17@MySQL");
         Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery("SELECT parent_username, child_username FROM relationships");
-        if (rs.next()) {
-            username.setText(rs.getString("parent_username"));
-            children.setText(rs.getString("child_username"));
+        ResultSet rs = st.executeQuery("SELECT parent_username, child_username FROM relationships WHERE parent_username = '" + parentUsername + "'");
+        
+        // Clear any previous text in the labels
+        username.setText("");
+        children.setText("");
+        
+        // Variables to store parent and child usernames
+        String parentName = "";
+        StringBuilder childNames = new StringBuilder();
+        
+        // Counter for numbering the children
+        int childCount = 1;
+        
+        // Loop through the result set
+        while (rs.next()) {
+            // Get parent and child usernames
+            parentName = rs.getString("parent_username");
+            String childName = rs.getString("child_username");
+            
+            // Append child number and name with newline separator
+            childNames.append(childCount).append(". ").append(childName).append(" ");
+            // Increment child counter
+            childCount++;
         }
+        
+        // Set the text of the labels with parent and numbered child usernames
+        username.setText(parentName);
+        children.setText(childNames.toString()); // Convert StringBuilder to String
+        
         con.close();
     } catch (Exception e) {
         System.out.println(e.getMessage());
@@ -42,12 +66,11 @@ public class ParentProfileFrame extends javax.swing.JFrame {
 }
 
 
-
     public ParentProfileFrame() {
         initComponents();
         this.studentService = new StudentRepository();
         this.adminService = new AdminRepository();
-        Connect();
+        Connect("TanChinPeng");
     }
 
     /**
@@ -118,27 +141,27 @@ public class ParentProfileFrame extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel7.setText("Bookings made:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
 
         locationCoordinate.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         locationCoordinate.setText("1");
-        jPanel2.add(locationCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 470, 240, 50));
+        jPanel2.add(locationCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 450, 50));
 
         username.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         username.setText("1");
-        jPanel2.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 240, 50));
+        jPanel2.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 240, 50));
 
         email.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         email.setText("1");
-        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, 240, 50));
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 240, 50));
 
         children.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         children.setText("1");
-        jPanel2.add(children, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 240, 50));
+        jPanel2.add(children, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 490, 100));
 
         bookingsMade.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         bookingsMade.setText("1");
-        jPanel2.add(bookingsMade, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 240, 50));
+        jPanel2.add(bookingsMade, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 440, 50));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 910, 580));
 
