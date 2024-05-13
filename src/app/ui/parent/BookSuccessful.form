@@ -76,16 +76,16 @@
             <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="bookingInfo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="name, time, destination"/>
+                <Property name="text" type="java.lang.String" value="destination, time, name"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="250" y="110" width="320" height="-1"/>
+                  <AbsoluteConstraints x="130" y="80" width="530" height="130"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -98,7 +98,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="240" y="40" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="260" y="20" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
