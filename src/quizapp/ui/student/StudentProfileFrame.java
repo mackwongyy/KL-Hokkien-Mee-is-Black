@@ -6,6 +6,10 @@ package quizapp.ui.student;
 
 import app.ui.educator.*;
 import app.ui.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 import repositories.AdminRepository;
 import repositories.StudentRepository;
@@ -23,11 +27,58 @@ public class StudentProfileFrame extends javax.swing.JFrame {
      */
     private final StudentService studentService;
     private final AdminService adminService;
+    
+    public void Connect(String childUsername) {
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ds_assignment?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Wdhjbhgq@17@MySQL");
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery("SELECT parent_username, child_username FROM relationships WHERE child_username = '" + childUsername + "'");
+
+        // Clear any previous text in the labels
+        parent.setText("");
+        username.setText("");
+
+        // Variables to store parent and child usernames
+        StringBuilder parentNames = new StringBuilder();
+
+        // Counter for numbering the parents
+        int parentCount = 1;
+
+        // Loop through the result set
+        while (rs.next()) {
+            // Get parent and child usernames
+            String parentName = rs.getString("parent_username");
+            String childName = rs.getString("child_username");
+
+            // Append parent number and name with newline separator
+            parentNames.append(parentCount).append(") ").append(parentName).append(" ");
+
+            // Set child username only if it matches the input parameter
+            if (childName.equals(childUsername)) {
+                username.setText(childName);
+            }
+
+            // Increment parent counter
+            parentCount++;
+        }
+
+        // Set the text of the labels with parent and child usernames
+        parent.setText(parentNames.toString()); // Convert StringBuilder to String
+
+        con.close();
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+    }
+}
+
+
 
     public StudentProfileFrame() {
         initComponents();
         this.studentService = new StudentRepository();
         this.adminService = new AdminRepository();
+        Connect("Adamtan09");
     }
 
     /**
@@ -46,15 +97,15 @@ public class StudentProfileFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        email = new javax.swing.JLabel();
+        points = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
+        friends = new javax.swing.JLabel();
+        locationCoordinate = new javax.swing.JLabel();
+        parent = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
@@ -93,21 +144,6 @@ public class StudentProfileFrame extends javax.swing.JFrame {
         jLabel8.setText("Location Coordinate:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 490, 300, 40));
-
-        jTextField2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 300, 40));
-
-        jTextField3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 300, 40));
-
-        jTextField4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 300, 40));
-
-        jTextField5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 300, 40));
-
         jLabel15.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel15.setText("Parent:");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
@@ -120,8 +156,29 @@ public class StudentProfileFrame extends javax.swing.JFrame {
         jLabel6.setText("Current Points:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
-        jTextField6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 300, 40));
+        email.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        email.setText("1");
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 240, 50));
+
+        points.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        points.setText("1");
+        jPanel2.add(points, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 240, 50));
+
+        username.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        username.setText("1");
+        jPanel2.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 490, 50));
+
+        friends.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        friends.setText("1");
+        jPanel2.add(friends, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 440, 120));
+
+        locationCoordinate.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        locationCoordinate.setText("1");
+        jPanel2.add(locationCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, 450, 50));
+
+        parent.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        parent.setText("1");
+        jPanel2.add(parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 490, 50));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 910, 580));
 
@@ -1209,6 +1266,8 @@ public class StudentProfileFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JLabel email;
+    private javax.swing.JLabel friends;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1220,11 +1279,9 @@ public class StudentProfileFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel locationCoordinate;
+    private javax.swing.JLabel parent;
+    private javax.swing.JLabel points;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }

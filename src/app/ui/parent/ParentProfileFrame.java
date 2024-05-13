@@ -26,44 +26,44 @@ public class ParentProfileFrame extends javax.swing.JFrame {
     private final AdminService adminService;
     
     public void Connect(String parentUsername) {
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ds_assignment?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Wdhjbhgq@17@MySQL");
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery("SELECT parent_username, child_username FROM relationships WHERE parent_username = '" + parentUsername + "'");
-        
-        // Clear any previous text in the labels
-        username.setText("");
-        children.setText("");
-        
-        // Variables to store parent and child usernames
-        String parentName = "";
-        StringBuilder childNames = new StringBuilder();
-        
-        // Counter for numbering the children
-        int childCount = 1;
-        
-        // Loop through the result set
-        while (rs.next()) {
-            // Get parent and child usernames
-            parentName = rs.getString("parent_username");
-            String childName = rs.getString("child_username");
-            
-            // Append child number and name with newline separator
-            childNames.append(childCount).append(". ").append(childName).append(" ");
-            // Increment child counter
-            childCount++;
-        }
-        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ds_assignment?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Wdhjbhgq@17@MySQL");
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT parent_username, child_username FROM relationships WHERE parent_username = '" + parentUsername + "'");
+
+            // Clear any previous text in the labels
+            username.setText("");
+            children.setText("");
+
+            // Variables to store parent and child usernames
+            String parentName = "";
+            StringBuilder childNames = new StringBuilder();
+
+            // Counter for numbering the children
+            int childCount = 1;
+
+            // Loop through the result set
+            while (rs.next()) {
+                // Get parent and child usernames
+                parentName = rs.getString("parent_username");
+                String childName = rs.getString("child_username");
+
+                // Append child number and name with newline separator
+                childNames.append(childCount).append(") ").append(childName).append(" ");
+                // Increment child counter
+                childCount++;
+            }
+
         // Set the text of the labels with parent and numbered child usernames
-        username.setText(parentName);
-        children.setText(childNames.toString()); // Convert StringBuilder to String
-        
-        con.close();
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
+            username.setText(parentName);
+            children.setText(childNames.toString()); // Convert StringBuilder to String
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
-}
 
 
     public ParentProfileFrame() {
