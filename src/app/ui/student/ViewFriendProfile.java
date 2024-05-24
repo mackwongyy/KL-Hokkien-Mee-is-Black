@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package app.ui.educator;
+package app.ui.student;
 
+import app.ui.educator.*;
 import app.ui.*;
 import javax.swing.JOptionPane;
 import repositories.StudentRepository;
@@ -13,14 +14,14 @@ import services.StudentService;
  *
  * @author x
  */
-public class EducatorProfileFrame extends javax.swing.JFrame {
+public class ViewFriendProfile extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
     private final StudentService studentService;
 
-    public EducatorProfileFrame() {
+    public ViewFriendProfile() {
         initComponents();
         this.studentService = new StudentRepository();
     }
@@ -35,20 +36,18 @@ public class EducatorProfileFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        locationCoordinate = new javax.swing.JLabel();
-        username = new javax.swing.JLabel();
-        email = new javax.swing.JLabel();
-        children = new javax.swing.JLabel();
-        bookingsMade = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        email = new javax.swing.JTextField();
+        ranking = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
+        points = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,67 +59,52 @@ public class EducatorProfileFrame extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(4000, 3000));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Profile");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255, 80));
-        jPanel2.setForeground(new java.awt.Color(255, 255, 255, 80));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setBackground(new java.awt.Color(204, 204, 0));
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel14.setText("Educator");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 44, 207, 46));
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel5.setText("Current Points:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel2.setText("Name:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel3.setText("Ranking on Global Leaderboard:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel4.setText("Username:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 108, -1, -1));
+        jLabel4.setText("Email:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel5.setText("Email:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 152, -1, -1));
+        jButton1.setBackground(new java.awt.Color(255, 153, 255));
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Send Friend Request");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, -1, -1));
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 270, 40));
+        jPanel2.add(ranking, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 270, 40));
+        jPanel2.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 270, 40));
+        jPanel2.add(points, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 270, 40));
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel7.setText("Number of Quizzes Created:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 270, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 700, 460));
 
-        jLabel17.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel17.setText("Number of Events Created:");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 335, -1, -1));
+        jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jButton3.setText("Previous");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 640, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel8.setText("Location Coordinate:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jButton2.setText("Next");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 650, 90, -1));
 
-        locationCoordinate.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        locationCoordinate.setText("1");
-        jPanel2.add(locationCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 490, 240, 50));
-
-        username.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        username.setText("1");
-        jPanel2.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 240, 50));
-
-        email.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        email.setText("1");
-        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 240, 50));
-
-        children.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        children.setText("1");
-        jPanel2.add(children, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 240, 50));
-
-        bookingsMade.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        bookingsMade.setText("1");
-        jPanel2.add(bookingsMade, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, 240, 50));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 910, 580));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/homeButton1.jpg"))); // NOI18N
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, -1, 40));
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/profileB.jpg"))); // NOI18N
-        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 1760, 1260));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/friend1.jpg"))); // NOI18N
+        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 1760, 1020));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,6 +124,10 @@ public class EducatorProfileFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -157,13 +145,13 @@ public class EducatorProfileFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EducatorProfileFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewFriendProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EducatorProfileFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewFriendProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EducatorProfileFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewFriendProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EducatorProfileFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewFriendProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -681,27 +669,25 @@ public class EducatorProfileFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EducatorProfileFrame().setVisible(true);
+                new ViewFriendProfile().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JLabel bookingsMade;
-    private javax.swing.JLabel children;
-    private javax.swing.JLabel email;
+    private javax.swing.JTextField email;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel locationCoordinate;
-    private javax.swing.JLabel username;
+    private javax.swing.JTextField name;
+    private javax.swing.JTextField points;
+    private javax.swing.JTextField ranking;
     // End of variables declaration//GEN-END:variables
 }

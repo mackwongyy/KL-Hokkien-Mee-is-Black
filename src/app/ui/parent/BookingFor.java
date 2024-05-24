@@ -4,13 +4,10 @@
  */
 package app.ui.parent;
 
-import quizapp.ui.student.*;
 import app.ui.educator.*;
 import app.ui.*;
 import javax.swing.JOptionPane;
-import repositories.AdminRepository;
 import repositories.StudentRepository;
-import services.AdminService;
 import services.StudentService;
 
 import java.sql.Connection;
@@ -34,13 +31,11 @@ public class BookingFor extends javax.swing.JFrame {
      * Creates new form Login
      */
     private final StudentService studentService;
-    private final AdminService adminService;
     private static String selectedChild;
 
     public BookingFor() {
         initComponents();
         this.studentService = new StudentRepository();
-        this.adminService = new AdminRepository();
         populateChildComboBox("TanChinPeng", childComboBox);
     }
 

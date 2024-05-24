@@ -4,13 +4,10 @@
  */
 package app.ui.parent;
 
-import quizapp.ui.student.*;
 import app.ui.educator.*;
 import app.ui.*;
 import javax.swing.JOptionPane;
-import repositories.AdminRepository;
 import repositories.StudentRepository;
-import services.AdminService;
 import services.StudentService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -40,7 +37,6 @@ public class BookingTimeSlot extends javax.swing.JFrame {
      * Creates new form Login
      */
     private final StudentService studentService;
-    private final AdminService adminService;
     private static final String DB_URL = "jdbc:mysql://localhost:3306/ds_assignment?zeroDateTimeBehavior=CONVERT_TO_NULL";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "Wdhjbhgq@17@MySQL";
@@ -50,7 +46,6 @@ public class BookingTimeSlot extends javax.swing.JFrame {
         initComponents();
         this.destinationLabel.setText(destinationName);
         this.studentService = new StudentRepository();
-        this.adminService = new AdminRepository();
         this.selectedChild = selectedChild;
         displayTimeSlots();
     }
@@ -104,7 +99,7 @@ public class BookingTimeSlot extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
+        homeB = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -124,8 +119,13 @@ public class BookingTimeSlot extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(4000, 3000));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/parent/homeButton1.jpg"))); // NOI18N
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
+        homeB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/parent/homeButton1.jpg"))); // NOI18N
+        homeB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(homeB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
@@ -210,6 +210,10 @@ public class BookingTimeSlot extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Invalid time slot. Please enter a valid time slot.");
     }
     }//GEN-LAST:event_BookButtonActionPerformed
+
+    private void homeBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeBActionPerformed
     
 
 private boolean isValidTimeSlot(int selectedSlotIndex) {
@@ -283,7 +287,7 @@ private boolean isValidTimeSlot(int selectedSlotIndex) {
     private javax.swing.JTextField TimeSlotInput;
     private javax.swing.JLabel background;
     private javax.swing.JLabel destinationLabel;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton homeB;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

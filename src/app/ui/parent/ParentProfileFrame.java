@@ -7,10 +7,6 @@ import java.sql.*;
 import app.ui.educator.*;
 import app.ui.*;
 import javax.swing.JOptionPane;
-import repositories.AdminRepository;
-import repositories.StudentRepository;
-import services.AdminService;
-import services.StudentService;
 
 /**
  *
@@ -21,10 +17,6 @@ public class ParentProfileFrame extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    
-    private final StudentService studentService;
-    private final AdminService adminService;
-    
     public void Connect(String parentUsername) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -68,8 +60,6 @@ public class ParentProfileFrame extends javax.swing.JFrame {
 
     public ParentProfileFrame() {
         initComponents();
-        this.studentService = new StudentRepository();
-        this.adminService = new AdminRepository();
         Connect("TanChinPeng");
     }
 

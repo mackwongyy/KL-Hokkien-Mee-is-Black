@@ -4,13 +4,10 @@
  */
 package app.ui.parent;
 
-import quizapp.ui.student.*;
 import app.ui.educator.*;
 import app.ui.*;
 import javax.swing.JOptionPane;
-import repositories.AdminRepository;
 import repositories.StudentRepository;
-import services.AdminService;
 import services.StudentService;
 import java.sql.*;
 import app.ui.parent.BookingTimeSlot; // Import the BookingTimeSlotFrame class
@@ -27,7 +24,6 @@ public class BookDestination extends javax.swing.JFrame {
      * Creates new form Login
      */
     private final StudentService studentService;
-    private final AdminService adminService;
     private static String selectedChild;
     
     public static double calculateEuclideanDistance(double x1, double y1, double x2, double y2) {
@@ -112,7 +108,6 @@ public class BookDestination extends javax.swing.JFrame {
     public BookDestination(String selectedChild) {
         initComponents();
         this.studentService = new StudentRepository();
-        this.adminService = new AdminRepository();
         calculateAndDisplayDistances("TanChinPeng");
         this.selectedChild = selectedChild;
     }

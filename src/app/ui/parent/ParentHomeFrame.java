@@ -4,15 +4,9 @@
  */
 package app.ui.parent;
 
-import quizapp.ui.student.*;
 import app.ui.educator.*;
 import app.ui.*;
 import javax.swing.JOptionPane;
-import repositories.AdminRepository;
-import repositories.StudentRepository;
-import services.AdminService;
-import services.StudentService;
-
 /**
  *
  * @author x
@@ -22,13 +16,10 @@ public class ParentHomeFrame extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    private final StudentService studentService;
-    private final AdminService adminService;
+
 
     public ParentHomeFrame() {
         initComponents();
-        this.studentService = new StudentRepository();
-        this.adminService = new AdminRepository();
     }
 
     /**

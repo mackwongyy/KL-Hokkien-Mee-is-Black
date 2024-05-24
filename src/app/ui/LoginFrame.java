@@ -5,9 +5,7 @@
 package app.ui;
 
 import javax.swing.JOptionPane;
-import repositories.AdminRepository;
 import repositories.StudentRepository;
-import services.AdminService;
 import services.StudentService;
 
 /**
@@ -20,12 +18,10 @@ public class LoginFrame extends javax.swing.JFrame {
      * Creates new form Login
      */
     private final StudentService studentService;
-    private final AdminService adminService;
 
     public LoginFrame() {
         initComponents();
         this.studentService = new StudentRepository();
-        this.adminService = new AdminRepository();
     }
 
     /**
@@ -144,7 +140,6 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
         boolean studentLoginAttempt = studentService.getLogin(username.getText(), String.valueOf(password.getPassword()));
-        boolean adminLoginAttempt = adminService.getLogin(username.getText(), String.valueOf(password.getPassword()));
         
     }//GEN-LAST:event_loginButton1ActionPerformed
 

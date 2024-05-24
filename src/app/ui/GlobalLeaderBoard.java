@@ -5,11 +5,10 @@
 package app.ui;
 
 import javax.swing.JOptionPane;
-import repositories.AdminRepository;
 import repositories.StudentRepository;
-import services.AdminService;
 import services.StudentService;
-
+import session.SessionManager;
+import models.Role;
 /**
  *
  * @author x
@@ -20,12 +19,10 @@ public class GlobalLeaderBoard extends javax.swing.JFrame {
      * Creates new form Login
      */
     private final StudentService studentService;
-    private final AdminService adminService;
 
     public GlobalLeaderBoard() {
         initComponents();
         this.studentService = new StudentRepository();
-        this.adminService = new AdminRepository();
     }
 
     /**
@@ -39,7 +36,7 @@ public class GlobalLeaderBoard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        homeButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
@@ -58,8 +55,13 @@ public class GlobalLeaderBoard extends javax.swing.JFrame {
         jLabel2.setText("Global Leaderboard");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/homeButton1.jpg"))); // NOI18N
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
+        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/homeButton1.jpg"))); // NOI18N
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(homeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255, 80));
 
@@ -103,6 +105,22 @@ public class GlobalLeaderBoard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        // TODO add your handling code here:
+        Role currentRole = SessionManager.getCurrentUserRole();
+        if (currentRole == Role.EDUCATOR) {
+            new app.ui.educator.EducatorHomeFrame().setVisible(true);
+        } else if (currentRole == Role.PARENT) {
+            new app.ui.parent.ParentHomeFrame().setVisible(true);
+        } else if (currentRole == Role.STUDENT) {
+            new app.ui.student.StudentHomeFrame().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Access Denied: Invalid Role.");
+        }
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_homeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,7 +286,7 @@ public class GlobalLeaderBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

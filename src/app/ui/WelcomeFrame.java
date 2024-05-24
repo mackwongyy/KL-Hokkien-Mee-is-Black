@@ -5,9 +5,7 @@
 package app.ui;
 
 import javax.swing.JOptionPane;
-import repositories.AdminRepository;
 import repositories.StudentRepository;
-import services.AdminService;
 import services.StudentService;
 
 /**
@@ -20,12 +18,10 @@ public class WelcomeFrame extends javax.swing.JFrame {
      * Creates new form Login
      */
     private final StudentService studentService;
-    private final AdminService adminService;
 
     public WelcomeFrame() {
         initComponents();
         this.studentService = new StudentRepository();
-        this.adminService = new AdminRepository();
     }
 
     /**

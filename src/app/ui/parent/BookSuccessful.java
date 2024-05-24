@@ -4,13 +4,10 @@
  */
 package app.ui.parent;
 
-import quizapp.ui.student.*;
 import app.ui.educator.*;
 import app.ui.*;
 import javax.swing.JOptionPane;
-import repositories.AdminRepository;
 import repositories.StudentRepository;
-import services.AdminService;
 import services.StudentService;
 
 import java.awt.event.ActionEvent;
@@ -30,7 +27,6 @@ public class BookSuccessful extends javax.swing.JFrame {
      * Creates new form Login
      */
     private final StudentService studentService = null;
-    private final AdminService adminService = null;
     
     private static final String DB_URL = "jdbc:mysql://localhost:3306/ds_assignment?zeroDateTimeBehavior=CONVERT_TO_NULL";
     private static final String DB_USER = "root";
