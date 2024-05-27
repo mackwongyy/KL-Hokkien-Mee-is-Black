@@ -7,6 +7,10 @@ package app.ui;
 import javax.swing.JOptionPane;
 import repositories.StudentRepository;
 import services.StudentService;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import models.User;
 
 /**
  *
@@ -139,8 +143,31 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
-        boolean studentLoginAttempt = studentService.getLogin(username.getText(), String.valueOf(password.getPassword()));
+        String enteredUsername = username.getText();
+        String enteredPassword = String.valueOf(password.getPassword());
+        String selectedRole = (String) jComboBox1.getSelectedItem();
         
+        boolean loginSuccessful = studentService.getLogin(enteredUsername, enteredPassword);
+        
+        if(loginSuccessful){
+            JOptionPane.showMessageDialog(this, "Login Successful!");
+            // Redirect user based on the role
+            switch(selectedRole){
+                case "Student": 
+                    // redirect to student dashboard
+                    break;
+                case "Parent":
+                    // redirect to parent dashboard
+                    break;
+                case "Educator":
+                    // redirect to eudcator dashboard
+                    break;
+                default: break;
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Login failed. Invalid username or password.");
+        }
     }//GEN-LAST:event_loginButton1ActionPerformed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed

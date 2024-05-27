@@ -6,8 +6,10 @@ package app.ui.educator;
 
 import app.ui.*;
 import javax.swing.JOptionPane;
-import repositories.StudentRepository;
-import services.StudentService;
+import repositories.EducatorRepository;
+import services.EducatorService;
+import models.User;
+import models.Role;
 
 /**
  *
@@ -18,11 +20,42 @@ public class EducatorRegisterFrame extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    private final StudentService studentService;
+    private final EducatorService educatorService;
 
     public EducatorRegisterFrame() {
         initComponents();
-        this.studentService = new StudentRepository();
+        this.educatorService = new EducatorRepository();
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        String username = jTextField2.getText();
+        String email = jTextField4.getText();
+        String password = jTextField5.getText();
+        
+        // Generate random coordinates for x and y in range of [-500, 500)
+        double x = Math.random() * 1000 - 500;
+        double y = Math.random() * 1000 - 500;
+        String coordinate = "( " + x + " , " + y + " )";
+
+        // Create a new educator object
+        // For simplicity, assuming parent and children are null for educators
+        User educator = new User(email, username, password, Role.EDUCATOR, null, null, coordinate, 0);
+
+        // Validation
+        boolean registered = educatorService.registerEducator(username, password, "Educator");
+
+        if (registered) {
+            JOptionPane.showMessageDialog(this, "Registration successful!");
+            redirectToLoginPage();
+        } else {
+            JOptionPane.showMessageDialog(this, "Registration failed. Please register again.");
+        }
+    }    
+    
+    private void redirectToLoginPage(){
+        LoginFrame loginFrame = new LoginFrame();
+        loginFrame.setVisible(true);
+        this.dispose(); //Close current registration frame
     }
 
     /**
@@ -143,14 +176,16 @@ public class EducatorRegisterFrame extends javax.swing.JFrame {
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
+        String username = jTextField2.getText();
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
+        String email = jTextField4.getText();
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
+        String password = jTextField5.getText();
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed

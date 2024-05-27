@@ -9,5 +9,6 @@ package services;
  * @author User
  */
 public interface EducatorService {
-        public boolean getLogin(String username, String password);
+    boolean registerEducator(String username, String password, String role);
+    boolean getLogin(String username, String password);
 }

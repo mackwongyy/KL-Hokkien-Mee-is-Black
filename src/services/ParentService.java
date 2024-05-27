@@ -10,4 +10,5 @@ package services;
  */
 public interface ParentService {
         public boolean getLogin(String username, String password);
+        boolean registerParent(String username, String password, String child, String role);
 }

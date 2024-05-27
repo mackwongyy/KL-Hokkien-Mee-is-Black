@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package app.ui.student;
 
 import app.ui.educator.*;
@@ -9,6 +6,9 @@ import app.ui.*;
 import javax.swing.JOptionPane;
 import repositories.StudentRepository;
 import services.StudentService;
+import models.User;
+import models.Role;
+import java.util.Collections;
 
 /**
  *
@@ -24,6 +24,47 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
     public StudentRegisterFrame() {
         initComponents();
         this.studentService = new StudentRepository();
+    }
+    
+        /* Code for event handlers here
+    private void initComponents() {
+        // Code for initializing components
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+    }*/
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt){
+        String username = jTextField2.getText();
+        String email = jTextField4.getText();
+        String password = jTextField5.getText();
+        String parent = jTextField6.getText();
+        
+        // Generatr random coordinates for x and y in range of [-500 ,500)
+        double x = Math.random()*1000-500;
+        double y = Math.random()*1000-500;
+        String coordinate = "( "+x+" , "+y+" )";
+        
+        //Create a new user object
+        User students = new User(email, username, password, Role.STUDENT, parent,Collections.emptyList(),coordinate, 0);
+        
+        // Validation
+        boolean registered = studentService.registerStudent(username, password, "Student");
+        
+        if(registered){
+            JOptionPane.showMessageDialog(this, "Registration successful!");
+            redirectToLoginPage();
+        }    
+        else
+            JOptionPane.showMessageDialog(this, "Registration failed. Please register again.");
+    }
+    
+    private void redirectToLoginPage(){
+        LoginFrame loginFrame = new LoginFrame();
+        loginFrame.setVisible(true);
+        this.dispose(); //Close current registration frame
     }
 
     /**
@@ -159,19 +200,19 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+        String enteredUsername = jTextField2.getText();
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
+        String enteredEmail = jTextField4.getText();
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
+        String enteredPassword = jTextField5.getText();
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
+        String enteredParent = jTextField3.getText();
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed

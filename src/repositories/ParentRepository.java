@@ -8,13 +8,46 @@ package repositories;
  *
  * @author User
  */
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import services.ParentService;
 
-public class ParentRepository implements ParentService{
+public class ParentRepository implements ParentService {
+    private final String CSV_FILE_PATH = "resources/databases/parents.csv";
+
+    @Override
+    public boolean registerParent(String username, String password, String child ,String role) {
+        // Implement CSV writing logic to add a new educator
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE_PATH, true))) {
+            writer.write(username + "," + password + "," + child + "," + role + "\n");
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     @Override
     public boolean getLogin(String username, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // Implement CSV parsing logic to check login credentials
+        try (BufferedReader reader = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 3) {
+                    String csvUsername = parts[0];
+                    String csvPassword = parts[1];
+                    if (username.equals(csvUsername) && password.equals(csvPassword)) {
+                        return true;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
-    
 }

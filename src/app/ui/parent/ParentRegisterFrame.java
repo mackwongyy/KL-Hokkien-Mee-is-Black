@@ -7,20 +7,48 @@ package app.ui.parent;
 import app.ui.educator.*;
 import app.ui.*;
 import javax.swing.JOptionPane;
+import repositories.ParentRepository;
+import services.ParentService;
+import app.ui.LoginFrame;
+import models.*;
 
-/**
- *
- * @author x
- */
 public class ParentRegisterFrame extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Login
-     */
-
-
+    
+    private final ParentService parentService;
+    
     public ParentRegisterFrame() {
         initComponents();
+        this.parentService = new ParentRepository();
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        String username = jTextField2.getText();
+        String email = jTextField4.getText();
+        String password = jTextField5.getText();
+        String child = jTextField6.getText();
+        
+        double x = Math.random() * 1000 - 500;
+        double y = Math.random() * 1000 - 500;
+        String coordinate = "( " + x + " , " + y + " )";
+        
+        // Create a new user object
+        User parent = new User(email, username, password, Role.PARENT, null, null, coordinate, 0);        
+
+        // Register the parent using ParentService
+        boolean registered = parentService.registerParent(username, password, child, "Parent");
+
+        if (registered) {
+            JOptionPane.showMessageDialog(this, "Registration successful!");
+            redirectToLoginPage(); // Redirect to login page
+        } else {
+            JOptionPane.showMessageDialog(this, "Registration failed. Please try again.");
+        }
+    }
+    
+    private void redirectToLoginPage(){
+        LoginFrame loginFrame = new LoginFrame();
+        loginFrame.setVisible(true);
+        this.dispose(); //Close current registration frame
     }
 
     /**
