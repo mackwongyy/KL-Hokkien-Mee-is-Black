@@ -3,38 +3,6 @@ package WIA1002GP;
 import java.util.*;
 import java.io.*;
 
-class Event {
-    protected String title, description, venue, date, time;
-
-    public Event(String title, String description, String venue, String date, String time) {
-        this.title = title;
-        this.description = description;
-        this.venue = venue;
-        this.date = date;
-        this.time = time;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getVenue() {
-        return venue;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-}
-
 class Student {
     private String id, name;
     private ArrayList<Event> registeredEvents;
