@@ -7,7 +7,7 @@ class Parent {
     private String id, name;
     private ArrayList<Event> registeredEvents;
 
-    public Student(String id, String name) {
+    public Parent(String id, String name) {
         this.id = id;
         this.name = name;
         this.registeredEvents = new ArrayList<>();
