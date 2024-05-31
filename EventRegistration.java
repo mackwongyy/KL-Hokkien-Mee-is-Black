@@ -30,6 +30,33 @@ class Parent {
     }
 }
 
+class Student {
+    private String id, name;
+    private ArrayList<Quiz> attemptedQuizzes;
+
+    public Student(String id, String name) {
+        this.id = id;
+        this.name = name;
+        this.attemptedQuizzes = new ArrayList<>();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Quiz> getAttemptedQuizzes() {
+        return attemptedQuizzes;
+    }
+
+    public void attemptQuiz(Quiz quiz) {
+        this.attemptedQuizzes.add(quiz);
+    }
+}
+
 public class EventRegistration {
     private HashMap<String, Parent> parents;
     private ArrayList<Event> parentEvents;
