@@ -16,13 +16,13 @@ import java.io.IOException;
 import services.ParentService;
 
 public class ParentRepository implements ParentService {
-    private final String CSV_FILE_PATH = "resources/databases/parents.csv";
+    private final String CSV_FILE_PATH = "C:/Users/lam zhuo yi/OneDrive/Desktop/Data Structure/KL-Hokkien-Mee-is-Black/src/resource/Parent.csv";
 
     @Override
-    public boolean registerParent(String username, String password, String child ,String role) {
+    public boolean registerParent(String email, String username, String password, String child ,String role, String coordinate) {
         // Implement CSV writing logic to add a new educator
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE_PATH, true))) {
-            writer.write(username + "," + password + "," + child + "," + role + "\n");
+            writer.write(email+ "," +username + "," + password + "," + child + "," + role +","+ coordinate + "\n");
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -37,9 +37,9 @@ public class ParentRepository implements ParentService {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 3) {
-                    String csvUsername = parts[0];
-                    String csvPassword = parts[1];
+                if (parts.length == 7) {
+                    String csvUsername = parts[1];
+                    String csvPassword = parts[2];
                     if (username.equals(csvUsername) && password.equals(csvPassword)) {
                         return true;
                     }

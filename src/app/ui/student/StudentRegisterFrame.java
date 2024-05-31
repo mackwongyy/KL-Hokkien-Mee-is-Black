@@ -37,28 +37,41 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
     }*/
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt){
+        
+        System.out.println("Register button clicked.");
+        
         String username = jTextField2.getText();
         String email = jTextField4.getText();
         String password = jTextField5.getText();
         String parent = jTextField6.getText();
+        
+        System.out.println(username);
+        System.out.println(email);
+        System.out.println(password);
+        System.out.println(parent);
         
         // Generatr random coordinates for x and y in range of [-500 ,500)
         double x = Math.random()*1000-500;
         double y = Math.random()*1000-500;
         String coordinate = "( "+x+" , "+y+" )";
         
+        System.out.println(coordinate);
+        
         //Create a new user object
         User students = new User(email, username, password, Role.STUDENT, parent,Collections.emptyList(),coordinate, 0);
         
         // Validation
-        boolean registered = studentService.registerStudent(username, password, "Student");
+        boolean registered = studentService.registerStudent(email, username, password, "Student", parent, coordinate, 0);
         
         if(registered){
+            System.out.println("Register successfully");
             JOptionPane.showMessageDialog(this, "Registration successful!");
             redirectToLoginPage();
         }    
-        else
+        else{
+            System.out.println("Register failed.");
             JOptionPane.showMessageDialog(this, "Registration failed. Please register again.");
+        }    
     }
     
     private void redirectToLoginPage(){
@@ -85,8 +98,6 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
@@ -153,21 +164,13 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
         });
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 450, 360, 51));
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 620, 360, 51));
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        jLabel8.setText("Location Coordinate");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 630, 410, -1));
-
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jButton1.setText("Register");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 700, 270, -1));
 
         jTextField6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -200,25 +203,26 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        String enteredUsername = jTextField2.getText();
+        //String username = jTextField2.getText();
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        String enteredEmail = jTextField4.getText();
+        //String enteredEmail = jTextField4.getText();
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        String enteredPassword = jTextField5.getText();
+        //String enteredPassword = jTextField5.getText();
     }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        String enteredParent = jTextField3.getText();
-    }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
+        //String enteredParent = jTextField3.getText();
     }//GEN-LAST:event_jTextField6ActionPerformed
-
+/*
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+*/
     /**
      * @param args the command line arguments
      */
@@ -773,10 +777,8 @@ public class StudentRegisterFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;

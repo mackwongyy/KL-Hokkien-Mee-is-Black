@@ -11,6 +11,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.User;
+import app.ui.parent.ParentHomeFrame;
+import app.ui.student.StudentHomeFrame;
+import app.ui.educator.EducatorHomeFrame;
+import services.ParentService;
+import repositories.ParentRepository;
+import services.EducatorService;
+import repositories.EducatorRepository;
 
 /**
  *
@@ -22,10 +29,14 @@ public class LoginFrame extends javax.swing.JFrame {
      * Creates new form Login
      */
     private final StudentService studentService;
+    private final EducatorService educatorService;
+    private final ParentService parentService;
 
     public LoginFrame() {
         initComponents();
         this.studentService = new StudentRepository();
+        this.educatorService = new EducatorRepository();
+        this.parentService = new ParentRepository();
     }
 
     /**
@@ -143,31 +154,101 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
-        String enteredUsername = username.getText();
-        String enteredPassword = String.valueOf(password.getPassword());
+        
+        System.out.println("Login button clicked.");
+        
+        String enteredUsername = username.getText().trim();
+        String enteredPassword = String.valueOf(password.getPassword()).trim();
         String selectedRole = (String) jComboBox1.getSelectedItem();
         
-        boolean loginSuccessful = studentService.getLogin(enteredUsername, enteredPassword);
+        System.out.println(enteredUsername+" "+enteredPassword+" "+selectedRole);
         
-        if(loginSuccessful){
+        switch (selectedRole){
+            case "Student":
+                boolean StudentLoginSuccessful = studentService.getLogin(enteredUsername, enteredPassword);
+                System.out.println("Student Login Successful: "+StudentLoginSuccessful);
+                if(StudentLoginSuccessful){
+                    System.out.println("Login success");
+                    JOptionPane.showMessageDialog(this, "Login Successful! Welcome "+enteredUsername);
+                    new StudentHomeFrame().setVisible(true);
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Login failed. Invalid username or password.");
+                }
+                break;
+            case "Parent":
+                boolean ParentLoginSuccessful = parentService.getLogin(enteredUsername, enteredPassword);
+                System.out.println("Parent Login Successful: "+ParentLoginSuccessful);
+                if(ParentLoginSuccessful){
+                    // System.out.println("Login success");
+                    JOptionPane.showMessageDialog(this, "Login Successful! Welcome "+enteredUsername);
+                    new ParentHomeFrame().setVisible(true);
+                    this.dispose();    
+                }
+                else{
+                    //System.out.println("Login failed");
+                    JOptionPane.showMessageDialog(this, "Login failed. Invalid username or password.");
+                }
+                break;
+            case "Educator":
+                boolean EducatorLoginSuccessful = educatorService.getLogin(enteredUsername, enteredPassword);
+                System.out.println("Educator Login Successful: "+EducatorLoginSuccessful);
+                if(EducatorLoginSuccessful){
+                    //System.out.println("Login success");
+                    JOptionPane.showMessageDialog(this, "Login Successful! Welcome "+ enteredUsername);
+                    new EducatorHomeFrame().setVisible(true);
+                    this.dispose();           
+                }
+                else{
+                    System.out.println("Login failed");
+                    JOptionPane.showMessageDialog(this, "Login failed. Invalid username or password.");
+                }
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Please select a valid role.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        //boolean StudentLoginSuccessful = studentService.getLogin(enteredUsername, enteredPassword);
+        //boolean EducatorLoginSuccessful = educatorService.getLogin(enteredUsername, enteredPassword);
+        
+        /*if(StudentLoginSuccessful){
             JOptionPane.showMessageDialog(this, "Login Successful!");
+            new StudentHomeFrame().setVisible(true);
+            this.dispose();
             // Redirect user based on the role
             switch(selectedRole){
                 case "Student": 
-                    // redirect to student dashboard
+                    // redirect to student homepage
+                    new StudentHomeFrame().setVisible(true);
                     break;
                 case "Parent":
-                    // redirect to parent dashboard
+                    // redirect to parent homepage
+                    new ParentHomeFrame().setVisible(true);
                     break;
                 case "Educator":
-                    // redirect to eudcator dashboard
+                    // redirect to eudcator homepage
+                    new EducatorHomeFrame().setVisible(true);
                     break;
-                default: break;
+                default:
+                    JOptionPane.showMessageDialog(this, "Please enter correct username or password.", "ERROR", JOptionPane.ERROR_MESSAGE);;
             }
+            this.dispose();
+        }
+        else if(ParentLoginSuccessful){
+            JOptionPane.showMessageDialog(this, "Login Successful!");
+            new ParentHomeFrame().setVisible(true);
+            this.dispose();
+        }
+        else if(EducatorLoginSuccessful){
+            JOptionPane.showMessageDialog(this, "Login Successful! Welcome "+ enteredUsername);
+            new EducatorHomeFrame().setVisible(true);
+            this.dispose();
         }
         else{
             JOptionPane.showMessageDialog(this, "Login failed. Invalid username or password.");
         }
+        */
     }//GEN-LAST:event_loginButton1ActionPerformed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed

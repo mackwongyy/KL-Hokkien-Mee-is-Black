@@ -16,13 +16,13 @@ import java.io.IOException;
 import services.EducatorService;
 
 public class EducatorRepository implements EducatorService {
-    private final String CSV_FILE_PATH = "resources/databases/educators.csv";
-
+    private final String CSV_FILE_PATH = "C:/Users/lam zhuo yi/OneDrive/Desktop/Data Structure/KL-Hokkien-Mee-is-Black/src/resource/Educator.csv";
+    
     @Override
-    public boolean registerEducator(String username, String password, String role) {
+    public boolean registerEducator(String email, String username, String password, String role, String coordinate) {
         // Implement CSV writing logic to add a new educator
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE_PATH, true))) {
-            writer.write(username + "," + password + "," + role + "\n");
+            writer.write(email+ "," +username + "," + password + "," + role +","+ coordinate + "\n");
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -37,9 +37,9 @@ public class EducatorRepository implements EducatorService {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 3) {
-                    String csvUsername = parts[0];
-                    String csvPassword = parts[1];
+                if (parts.length == 6) {
+                    String csvUsername = parts[1];
+                    String csvPassword = parts[2];
                     if (username.equals(csvUsername) && password.equals(csvPassword)) {
                         return true;
                     }

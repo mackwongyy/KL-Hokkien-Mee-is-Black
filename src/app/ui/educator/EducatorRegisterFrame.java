@@ -28,10 +28,15 @@ public class EducatorRegisterFrame extends javax.swing.JFrame {
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        System.out.println("Register button clicked.");
+        
         String username = jTextField2.getText();
         String email = jTextField4.getText();
-        String password = jTextField5.getText();
+        String password = jTextField6.getText();
         
+        System.out.println(username);
+        System.out.println(email);
+        System.out.println(password);
         // Generate random coordinates for x and y in range of [-500, 500)
         double x = Math.random() * 1000 - 500;
         double y = Math.random() * 1000 - 500;
@@ -42,12 +47,14 @@ public class EducatorRegisterFrame extends javax.swing.JFrame {
         User educator = new User(email, username, password, Role.EDUCATOR, null, null, coordinate, 0);
 
         // Validation
-        boolean registered = educatorService.registerEducator(username, password, "Educator");
+        boolean registered = educatorService.registerEducator(email, username, password, "Educator", coordinate);
 
         if (registered) {
+            System.out.println("Registered");
             JOptionPane.showMessageDialog(this, "Registration successful!");
             redirectToLoginPage();
         } else {
+            System.out.println("REGISTER FAIL");
             JOptionPane.showMessageDialog(this, "Registration failed. Please register again.");
         }
     }    
@@ -58,6 +65,19 @@ public class EducatorRegisterFrame extends javax.swing.JFrame {
         this.dispose(); //Close current registration frame
     }
 
+//    private void initComponents() {
+//        // Existing code for initializing components
+//
+//        // Insert the provided code snippet here
+//        jButton1.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton1ActionPerformed(evt);
+//            }
+//        });
+//
+//        // Other existing code
+//    }    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,8 +94,6 @@ public class EducatorRegisterFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
@@ -128,21 +146,13 @@ public class EducatorRegisterFrame extends javax.swing.JFrame {
         });
         jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 410, 51));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 540, 410, 51));
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        jLabel8.setText("Location Coordinate");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 410, -1));
-
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jButton1.setText("Register");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 700, 270, -1));
 
         jTextField6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -184,14 +194,44 @@ public class EducatorRegisterFrame extends javax.swing.JFrame {
         String email = jTextField4.getText();
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        String password = jTextField5.getText();
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
+        String password = jTextField6.getText();
     }//GEN-LAST:event_jTextField6ActionPerformed
+/*
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Register button clicked.");
+        
+        String username = jTextField2.getText();
+        String email = jTextField4.getText();
+        String password = jTextField6.getText();
+        
+        System.out.println(username);
+        System.out.println(email);
+        System.out.println(password);
+        // Generate random coordinates for x and y in range of [-500, 500)
+        double x = Math.random() * 1000 - 500;
+        double y = Math.random() * 1000 - 500;
+        String coordinate = "( " + x + " , " + y + " )";
 
+        // Create a new educator object
+        // For simplicity, assuming parent and children are null for educators
+        User educator = new User(email, username, password, Role.EDUCATOR, null, null, coordinate, 0);
+
+        // Validation
+        boolean registered = educatorService.registerEducator(username, password, "Educator");
+
+        if (registered) {
+            System.out.println("Registered");
+            JOptionPane.showMessageDialog(this, "Registration successful!");
+            redirectToLoginPage();
+        } else {
+            System.out.println("REGISTER FAIL");
+            JOptionPane.showMessageDialog(this, "Registration failed. Please register again.");
+        }        
+    }//GEN-LAST:event_jButton1ActionPerformed
+*/
     /**
      * @param args the command line arguments
      */
@@ -489,11 +529,9 @@ public class EducatorRegisterFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

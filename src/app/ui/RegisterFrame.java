@@ -7,6 +7,9 @@ package app.ui;
 import javax.swing.JOptionPane;
 import repositories.StudentRepository;
 import services.StudentService;
+import app.ui.parent.ParentRegisterFrame;
+import app.ui.educator.EducatorRegisterFrame;
+import app.ui.student.StudentRegisterFrame;
 
 /**
  *
@@ -97,6 +100,21 @@ public class RegisterFrame extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+        String getRole = jComboBox1.getSelectedItem().toString();
+        switch(getRole){
+            case "Student":
+                new StudentRegisterFrame().setVisible(true);
+                break;
+            case "Parent":
+                new ParentRegisterFrame().setVisible(true);
+                break;
+            case "Educator":
+                new EducatorRegisterFrame().setVisible(true);
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Please select a role.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
