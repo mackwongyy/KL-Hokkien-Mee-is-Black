@@ -7,7 +7,6 @@ package app.ui;
 import javax.swing.JOptionPane;
 import repositories.StudentRepository;
 import services.StudentService;
-
 /**
  *
  * @author x
@@ -35,8 +34,8 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        signUpButton = new javax.swing.JToggleButton();
+        loginButton = new javax.swing.JToggleButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,23 +53,23 @@ public class WelcomeFrame extends javax.swing.JFrame {
         jLabel2.setText("Hacking The Future");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 670, 121));
 
-        jToggleButton3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jToggleButton3.setText("Sign Up");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        signUpButton.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        signUpButton.setText("Sign Up");
+        signUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                signUpButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 490, 144, -1));
+        jPanel1.add(signUpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 490, 144, -1));
 
-        jToggleButton1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jToggleButton1.setText("Login");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 144, -1));
+        jPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 144, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/welcome1.jpg"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 1760, 1260));
@@ -93,13 +92,22 @@ public class WelcomeFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+        // Make the registerFrame visible
+        RegisterFrame registerFrame = new RegisterFrame();
+        registerFrame.setVisible(true);
+    
+    // Close the welcomeFrame
+         dispose();
+    }//GEN-LAST:event_signUpButtonActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+        LoginFrame loginFrame = new LoginFrame();
+    // Make the loginFrame visible
+        loginFrame.setVisible(true);
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,7 +149,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton loginButton;
+    private javax.swing.JToggleButton signUpButton;
     // End of variables declaration//GEN-END:variables
 }

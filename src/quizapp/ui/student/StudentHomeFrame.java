@@ -40,7 +40,7 @@ public class StudentHomeFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        studentProfileButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
@@ -58,9 +58,14 @@ public class StudentHomeFrame extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(4000, 3000));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/profileButton40.jpg"))); // NOI18N
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 50, 50));
+        studentProfileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/profileButton40.jpg"))); // NOI18N
+        studentProfileButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        studentProfileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentProfileButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(studentProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 50, 50));
 
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/notiB1.png"))); // NOI18N
@@ -126,6 +131,16 @@ public class StudentHomeFrame extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void studentProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentProfileButtonActionPerformed
+        // TODO add your handling code here:
+        StudentProfileFrame studentProfileFrame = new StudentProfileFrame();
+        // Make the BookingForm frame visible
+        studentProfileFrame.setVisible(true);
+
+        // Optionally, dispose of the current frame if you want to close it
+        dispose();
+    }//GEN-LAST:event_studentProfileButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,12 +435,12 @@ public class StudentHomeFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton studentProfileButton;
     // End of variables declaration//GEN-END:variables
 }

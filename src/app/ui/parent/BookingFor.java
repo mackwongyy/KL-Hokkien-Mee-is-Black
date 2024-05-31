@@ -49,7 +49,7 @@ public class BookingFor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
+        parentHomeButton = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -66,8 +66,13 @@ public class BookingFor extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(4000, 3000));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/parent/homeButton1.jpg"))); // NOI18N
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
+        parentHomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/parent/homeButton1.jpg"))); // NOI18N
+        parentHomeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parentHomeButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(parentHomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
@@ -183,6 +188,16 @@ public class BookingFor extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_OKButtonActionPerformed
 
+    private void parentHomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentHomeButtonActionPerformed
+        // TODO add your handling code here:
+        ParentHomeFrame parentHomeFrame = new ParentHomeFrame();
+        // Make the BookingForm frame visible
+        parentHomeFrame.setVisible(true);
+
+        // Optionally, dispose of the current frame if you want to close it
+        dispose();
+    }//GEN-LAST:event_parentHomeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -222,10 +237,10 @@ public class BookingFor extends javax.swing.JFrame {
     private javax.swing.JButton OKButton;
     private javax.swing.JLabel background;
     private javax.swing.JComboBox<String> childComboBox;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton parentHomeButton;
     // End of variables declaration//GEN-END:variables
 }

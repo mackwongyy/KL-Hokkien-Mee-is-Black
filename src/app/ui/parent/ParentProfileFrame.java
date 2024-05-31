@@ -86,9 +86,8 @@ public class ParentProfileFrame extends javax.swing.JFrame {
         email = new javax.swing.JLabel();
         children = new javax.swing.JLabel();
         bookingsMade = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        parentHomeButton = new javax.swing.JButton();
         background = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(480, 360));
@@ -155,14 +154,16 @@ public class ParentProfileFrame extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 910, 580));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/homeButton1.jpg"))); // NOI18N
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, -1, 40));
+        parentHomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/parent/homeButton1.jpg"))); // NOI18N
+        parentHomeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parentHomeButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(parentHomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/profileB.jpg"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 1760, 1260));
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/homeButton1.jpg"))); // NOI18N
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,6 +182,16 @@ public class ParentProfileFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void parentHomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentHomeButtonActionPerformed
+        // TODO add your handling code here:
+        ParentHomeFrame parentHomeFrame = new ParentHomeFrame();
+        // Make the BookingForm frame visible
+        parentHomeFrame.setVisible(true);
+
+        // Optionally, dispose of the current frame if you want to close it
+        dispose();
+    }//GEN-LAST:event_parentHomeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,8 +235,6 @@ public class ParentProfileFrame extends javax.swing.JFrame {
     private javax.swing.JLabel bookingsMade;
     private javax.swing.JLabel children;
     private javax.swing.JLabel email;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -236,6 +245,7 @@ public class ParentProfileFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel locationCoordinate;
+    private javax.swing.JButton parentHomeButton;
     private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }

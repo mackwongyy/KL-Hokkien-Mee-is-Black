@@ -38,7 +38,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        loginButton = new javax.swing.JButton();
+        backToWelcomeButton = new javax.swing.JButton();
         loginButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -58,14 +58,14 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(4000, 3000));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        loginButton.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/returnIcon3.png"))); // NOI18N
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
+        backToWelcomeButton.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        backToWelcomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/returnIcon3.png"))); // NOI18N
+        backToWelcomeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
+                backToWelcomeButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 40, 40));
+        jPanel1.add(backToWelcomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 40, 40));
 
         loginButton1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         loginButton1.setText("Login");
@@ -178,9 +178,15 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordActionPerformed
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_loginButtonActionPerformed
+    private void backToWelcomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToWelcomeButtonActionPerformed
+
+        WelcomeFrame welcomeFrame = new WelcomeFrame();
+        // Make the welcomeFrame visible
+        welcomeFrame.setVisible(true);
+
+        // Dispose of the current frame
+        dispose();
+    }//GEN-LAST:event_backToWelcomeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,6 +287,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backToWelcomeButton;
     private javax.swing.JLabel background;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel3;
@@ -288,7 +295,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton loginButton;
     private javax.swing.JButton loginButton1;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;

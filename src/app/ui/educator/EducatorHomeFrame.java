@@ -35,12 +35,13 @@ public class EducatorHomeFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        educatorProfileButton = new javax.swing.JButton();
+        notiButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        globalLearderBoardButton = new javax.swing.JButton();
+        upcomingEventsButton = new javax.swing.JButton();
+        createQuizButton = new javax.swing.JButton();
+        createEventButton = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,18 +53,23 @@ public class EducatorHomeFrame extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(4000, 3000));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/profileButton40.jpg"))); // NOI18N
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 50, 50));
-
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/notiB1.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        educatorProfileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/profileButton40.jpg"))); // NOI18N
+        educatorProfileButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        educatorProfileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                educatorProfileButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 50, 50));
+        jPanel1.add(educatorProfileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 50, 50));
+
+        notiButton.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        notiButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/notiB1.png"))); // NOI18N
+        notiButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notiButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(notiButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 50, 50));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Maiandra GD", 1, 60)); // NOI18N
@@ -71,17 +77,36 @@ public class EducatorHomeFrame extends javax.swing.JFrame {
         jLabel7.setText("Hacking The Future");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 600, 70));
 
-        jButton5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jButton5.setText("Global Leaderboard");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
+        globalLearderBoardButton.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        globalLearderBoardButton.setText("Global Leaderboard");
+        globalLearderBoardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                globalLearderBoardButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(globalLearderBoardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
-        jButton4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jButton4.setText("Upcoming Events");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, -1, -1));
+        upcomingEventsButton.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        upcomingEventsButton.setText("Upcoming Events");
+        upcomingEventsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upcomingEventsButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(upcomingEventsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jButton3.setText("Make Bookings");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 580, -1, -1));
+        createQuizButton.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        createQuizButton.setText("Create Quiz");
+        createQuizButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createQuizButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(createQuizButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 700, -1, -1));
+
+        createEventButton.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        createEventButton.setText("Create Event");
+        jPanel1.add(createEventButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 580, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/home1.jpg"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 1760, 1260));
@@ -104,9 +129,40 @@ public class EducatorHomeFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void notiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notiButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        NotificationFrame notificationFrame = new NotificationFrame();
+        notificationFrame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_notiButtonActionPerformed
+
+    private void createQuizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createQuizButtonActionPerformed
+        // TODO add your handling code here:
+        CreateQuizFrame createQuizFrame = new CreateQuizFrame();
+        createQuizFrame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_createQuizButtonActionPerformed
+
+    private void educatorProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_educatorProfileButtonActionPerformed
+        // TODO add your handling code here:
+        EducatorProfileFrame educatorProfileFrame = new EducatorProfileFrame();
+        educatorProfileFrame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_educatorProfileButtonActionPerformed
+
+    private void globalLearderBoardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_globalLearderBoardButtonActionPerformed
+        // TODO add your handling code here:
+        GlobalLeaderBoard globalLeaderBoard = new GlobalLeaderBoard();
+        globalLeaderBoard.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_globalLearderBoardButtonActionPerformed
+
+    private void upcomingEventsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upcomingEventsButtonActionPerformed
+        // TODO add your handling code here:
+        UpcomingEventFrame upcomingEventFrame = new UpcomingEventFrame();
+        upcomingEventFrame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_upcomingEventsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,12 +328,13 @@ public class EducatorHomeFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton createEventButton;
+    private javax.swing.JButton createQuizButton;
+    private javax.swing.JButton educatorProfileButton;
+    private javax.swing.JButton globalLearderBoardButton;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton notiButton;
+    private javax.swing.JButton upcomingEventsButton;
     // End of variables declaration//GEN-END:variables
 }

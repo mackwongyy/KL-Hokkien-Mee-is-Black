@@ -2,84 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package quizapp.ui.student;
+package app.ui.educator;
 
-import app.ui.educator.*;
 import app.ui.*;
-import app.ui.parent.ParentHomeFrame;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
-import repositories.AdminRepository;
 import repositories.StudentRepository;
-import services.AdminService;
 import services.StudentService;
 
 /**
  *
  * @author x
  */
-public class StudentProfileFrame extends javax.swing.JFrame {
+public class CreateEventDateTimeFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
     private final StudentService studentService;
-    private final AdminService adminService;
-    
-    public void Connect(String childUsername) {
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ds_assignment?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Wdhjbhgq@17@MySQL");
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery("SELECT parent_username, child_username FROM relationships WHERE child_username = '" + childUsername + "'");
 
-        // Clear any previous text in the labels
-        parent.setText("");
-        username.setText("");
-
-        // Variables to store parent and child usernames
-        StringBuilder parentNames = new StringBuilder();
-
-        // Counter for numbering the parents
-        int parentCount = 1;
-
-        // Loop through the result set
-        while (rs.next()) {
-            // Get parent and child usernames
-            String parentName = rs.getString("parent_username");
-            String childName = rs.getString("child_username");
-
-            // Append parent number and name with newline separator
-            parentNames.append(parentCount).append(") ").append(parentName).append(" ");
-
-            // Set child username only if it matches the input parameter
-            if (childName.equals(childUsername)) {
-                username.setText(childName);
-            }
-
-            // Increment parent counter
-            parentCount++;
-        }
-
-        // Set the text of the labels with parent and child usernames
-        parent.setText(parentNames.toString()); // Convert StringBuilder to String
-
-        con.close();
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-    }
-}
-
-
-
-    public StudentProfileFrame() {
+    public CreateEventDateTimeFrame() {
         initComponents();
         this.studentService = new StudentRepository();
-        this.adminService = new AdminRepository();
-        Connect("Adamtan09");
     }
 
     /**
@@ -93,21 +36,11 @@ public class StudentProfileFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        email = new javax.swing.JLabel();
-        points = new javax.swing.JLabel();
-        username = new javax.swing.JLabel();
-        friends = new javax.swing.JLabel();
-        locationCoordinate = new javax.swing.JLabel();
-        parent = new javax.swing.JLabel();
-        studentProfileHomeButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jLabel9 = new javax.swing.JLabel();
+        timePicker1 = new com.raven.swing.TimePicker();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,79 +52,28 @@ public class StudentProfileFrame extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(4000, 3000));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Profile");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+        jLabel2.setText("Create Event");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255, 80));
-        jPanel2.setForeground(new java.awt.Color(255, 255, 255, 80));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel5.setBackground(new java.awt.Color(204, 255, 255));
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
+        jLabel5.setText("Time:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, -1));
 
-        jLabel14.setBackground(new java.awt.Color(204, 204, 0));
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel14.setText("Student");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 44, 207, 46));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton1.setText("Create");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 720, -1, -1));
+        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, 670, 180));
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel4.setText("Username:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 108, -1, -1));
+        jLabel9.setBackground(new java.awt.Color(204, 255, 255));
+        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
+        jLabel9.setText("Date:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+        jPanel1.add(timePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 370, 660, 340));
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel5.setText("Email:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 152, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel8.setText("Location Coordinate:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
-
-        jLabel15.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel15.setText("Parent:");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel7.setText("Friends:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel6.setText("Current Points:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
-
-        email.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        email.setText("1");
-        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 240, 50));
-
-        points.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        points.setText("1");
-        jPanel2.add(points, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 240, 50));
-
-        username.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        username.setText("1");
-        jPanel2.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 490, 50));
-
-        friends.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        friends.setText("1");
-        jPanel2.add(friends, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 440, 120));
-
-        locationCoordinate.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        locationCoordinate.setText("1");
-        jPanel2.add(locationCoordinate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, 450, 50));
-
-        parent.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        parent.setText("1");
-        jPanel2.add(parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 490, 50));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 910, 580));
-
-        studentProfileHomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/educator/homeButton1.jpg"))); // NOI18N
-        studentProfileHomeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentProfileHomeButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(studentProfileHomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, -1, 40));
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/profileB.jpg"))); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/quiz1.jpg"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 1760, 1260));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -212,16 +94,6 @@ public class StudentProfileFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void studentProfileHomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentProfileHomeButtonActionPerformed
-        // TODO add your handling code here:
-        StudentHomeFrame studentHomeFrame = new StudentHomeFrame();
-        // Make the BookingForm frame visible
-        studentHomeFrame.setVisible(true);
-
-        // Optionally, dispose of the current frame if you want to close it
-        dispose();
-    }//GEN-LAST:event_studentProfileHomeButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -239,13 +111,13 @@ public class StudentProfileFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentProfileFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateEventDateTimeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentProfileFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateEventDateTimeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentProfileFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateEventDateTimeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentProfileFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateEventDateTimeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -1275,29 +1147,19 @@ public class StudentProfileFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentProfileFrame().setVisible(true);
+                new CreateEventDateTimeFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JLabel email;
-    private javax.swing.JLabel friends;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
+    private javax.swing.JButton jButton1;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel locationCoordinate;
-    private javax.swing.JLabel parent;
-    private javax.swing.JLabel points;
-    private javax.swing.JButton studentProfileHomeButton;
-    private javax.swing.JLabel username;
+    private com.raven.swing.TimePicker timePicker1;
     // End of variables declaration//GEN-END:variables
 }

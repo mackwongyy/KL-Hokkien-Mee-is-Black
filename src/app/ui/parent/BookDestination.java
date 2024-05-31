@@ -145,7 +145,7 @@ public class BookDestination extends javax.swing.JFrame {
         L8 = new javax.swing.JLabel();
         L9 = new javax.swing.JLabel();
         B9 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        parentHomeButton = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -284,8 +284,13 @@ public class BookDestination extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 1350, 530));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/parent/homeButton1.jpg"))); // NOI18N
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
+        parentHomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/parent/homeButton1.jpg"))); // NOI18N
+        parentHomeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parentHomeButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(parentHomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 740, 50, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/booking1.jpg"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 1760, 1260));
@@ -353,6 +358,16 @@ public class BookDestination extends javax.swing.JFrame {
         openBookingTimeSlotFrame(L9.getText().split(": ")[0], selectedChild);
     }//GEN-LAST:event_B9ActionPerformed
 
+    private void parentHomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentHomeButtonActionPerformed
+        // TODO add your handling code here:
+        ParentHomeFrame parentHomeFrame = new ParentHomeFrame();
+        // Make the BookingForm frame visible
+        parentHomeFrame.setVisible(true);
+
+        // Optionally, dispose of the current frame if you want to close it
+        dispose();
+    }//GEN-LAST:event_parentHomeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -388,9 +403,9 @@ public class BookDestination extends javax.swing.JFrame {
     private javax.swing.JLabel L8;
     private javax.swing.JLabel L9;
     private javax.swing.JLabel background;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton parentHomeButton;
     // End of variables declaration//GEN-END:variables
 }

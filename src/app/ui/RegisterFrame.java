@@ -38,6 +38,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jToggleButton1 = new javax.swing.JToggleButton();
+        backToWelcomeButton = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,6 +75,15 @@ public class RegisterFrame extends javax.swing.JFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 500, 165, 39));
 
+        backToWelcomeButton.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        backToWelcomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/returnIcon3.png"))); // NOI18N
+        backToWelcomeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backToWelcomeButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(backToWelcomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 40, 40));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/ui/register2.jpg"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -180, 1760, 1260));
 
@@ -98,6 +108,16 @@ public class RegisterFrame extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void backToWelcomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToWelcomeButtonActionPerformed
+
+        WelcomeFrame welcomeFrame = new WelcomeFrame();
+        // Make the welcomeFrame visible
+        welcomeFrame.setVisible(true);
+
+        // Dispose of the current frame
+        dispose();
+    }//GEN-LAST:event_backToWelcomeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,6 +282,7 @@ public class RegisterFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backToWelcomeButton;
     private javax.swing.JLabel background;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
