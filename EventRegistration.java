@@ -3,7 +3,7 @@ package WIA1002GP;
 import java.util.*;
 import java.io.*;
 
-class Student {
+class Parent {
     private String id, name;
     private ArrayList<Event> registeredEvents;
 
@@ -31,8 +31,8 @@ class Student {
 }
 
 public class EventRegistration {
-    private HashMap<String, Student> students;
-    private ArrayList<Event> studentEvents;
+    private HashMap<String, Parent> parents;
+    private ArrayList<Event> parentEvents;
 
     public EventRegistration() {
         this.students = new HashMap<>();
@@ -75,6 +75,7 @@ public class EventRegistration {
         EventRegistration eventManager = new EventRegistration();
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
+        //dummy entries
         eventManager.addStudent(new Student("1", "Alice"));
         eventManager.addStudent(new Student("2", "Bob"));
         eventManager.createEvent("Math Workshop", "Math workshop for beginners", "Room 101", "2024-06-01", "10:00:00");
